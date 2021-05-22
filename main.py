@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI(title='Postal Codes Service',
@@ -11,3 +12,7 @@ async def upload():
 @app.post('/postal_codes/create')
 async def create():
     return 'create some postal code register'
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
