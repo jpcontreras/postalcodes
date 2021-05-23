@@ -1,7 +1,7 @@
 import uvicorn
 from fastapi import FastAPI
 from config.database import connection
-from application import file_uploads_controller, postal_codes_controller
+from infraestructure import postal_codes_controller, file_uploads_controller
 
 app = FastAPI(title='Postal Codes Service',
               description='This service use some flat file with csv format to save and send to another service to process data.',
