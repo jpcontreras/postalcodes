@@ -2,6 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from config.database import connection
 from infraestructure import postal_codes_controller, file_uploads_controller
+#from domain.file_upload import FileUpload
+from domain.postal_code import PostalCode
 
 app = FastAPI(title='Postal Codes Service',
               description='This service use some flat file with csv format to save and send to another service to process data.',
@@ -11,6 +13,7 @@ app.on_event('startup')
 def startup():
     if connection.is_closed():
         connection.connect()
+    connection.create_tables([PostalCode])
 
 app.get('shutdown')
 def shutdown():
