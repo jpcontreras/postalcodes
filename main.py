@@ -13,7 +13,6 @@ app.on_event('startup')
 def startup():
     if connection.is_closed():
         connection.connect()
-    connection.create_tables([PostalCode])
 
 app.get('shutdown')
 def shutdown():
