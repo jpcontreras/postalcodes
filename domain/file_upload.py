@@ -1,9 +1,11 @@
+import datetime
+from peewee import *
 from config.database import connection
 
 class FileUpload(Model):
-    id        = AutoField()
-    file      = BlobField()
-    timestamp = DateTimeField(default=datetime.datetime.now)
+    id         = AutoField()
+    file       = BlobField()
+    created_at = DateTimeField(default=datetime.datetime.now)
 
     def __str__(self):
         return  self.file
