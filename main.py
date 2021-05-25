@@ -1,13 +1,25 @@
 import uvicorn
 from fastapi import FastAPI
 from config.database import connection
-from infraestructure import postal_codes_controller, file_uploads_controller
-#from domain.file_upload import FileUpload
-from domain.postal_code import PostalCode
+from fastapi.middleware.cors import CORSMiddleware
+from infraestructure.controllers import file_uploads_controller, postal_codes_controller
 
 app = FastAPI(title='Postal Codes Service',
               description='This service use some flat file with csv format to save and send to another service to process data.',
               version='0.0.1')
+
+origins = [
+    "processor_web_1:3000",
+    "http://localhost",
+    "http://localhost:8080",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.on_event('startup')
 def startup():

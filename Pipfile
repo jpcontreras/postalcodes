@@ -8,6 +8,7 @@ fastapi = ">=0.42.*"
 uvicorn = ">=0.10.*"
 peewee = "*"
 python-multipart = "*"
+requests = "*"
 
 [dev-packages]
 
