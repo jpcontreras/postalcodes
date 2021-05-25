@@ -10,3 +10,4 @@ async def create(data: PostalCodeRequestModel):
     interactor = CreatePostalCode(data.latitude, data.longitude, data.postal_details[0])
     interactor.run()
     return 'Postal code created.'
+
